@@ -5,14 +5,17 @@ on:
         branches:
             - master
             - develop
-
+            - feature*
 jobs:
     build:
         name: Build
         runs-on: ubuntu-latest
-        if: startsWith( github.event.pull_request.head.ref , 'feature/***' )
+        if: startsWith( github.event.pull_request.head.ref , 'feature/' )
 
         steps:
+            - name: Show branch name
+              run: echo ${{ github.event.pull_request.head.ref }}
+
             - name: checkout code
               uses: actions/checkout@v3
           
