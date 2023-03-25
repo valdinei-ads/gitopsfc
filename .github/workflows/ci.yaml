@@ -2,13 +2,13 @@ name: ContinuosIntegration
 
 on:
     pull_request:
-        branches:
-            - 'feature/**'
+        branches: [master]
 
 jobs:
     build:
         name: Build
         runs-on: ubuntu-latest
+        if: contains(github.event.pull_request.labels.*.name, 'feature/**')
 
         steps:
             - name: checkout code
