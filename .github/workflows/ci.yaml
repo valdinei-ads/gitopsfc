@@ -1,9 +1,9 @@
 name: ContinuosIntegration
 
 on:
-    push:
+    pull_request:
         branches:
-            - master
+            - 'feature/**'
 
 jobs:
     build:
@@ -14,10 +14,5 @@ jobs:
             - name: checkout code
               uses: actions/checkout@v3
           
-            - name: Build and Push Image to Dockerhub
-              uses: docker/build-push-action@v1.1.0
-              with:
-                username: ${{ secrets.DOCKER_USERNAME }}
-                password: ${{ secrets.DOCKER_PASSWORD }}
-                repository: ${{ secrets.DOCKER_USERNAME }}/gitopsfc
-                tags: ${{ github.sha }}, latest
+            - name: Build
+              uses: docker/build@v1.1.0
