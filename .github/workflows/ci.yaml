@@ -1,4 +1,4 @@
-name: ContinuosIntegration
+name: ContinuosIntegration_02
 
 on:
     pull_request:
