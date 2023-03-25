@@ -2,7 +2,8 @@ name: ContinuosIntegration
 
 on:
     pull_request:
-        branches: [master]
+        branches: 
+            - feature/***
 
 jobs:
     build:
